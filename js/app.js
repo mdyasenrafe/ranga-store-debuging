@@ -1,6 +1,7 @@
 const loadProducts = () => {
   const url = `https://fakestoreapi.com/products`;
-  fetch(url)
+  const few = `http://127.0.0.1:5500/data.json`;
+  fetch(few)
     .then((response) => response.json())
     .then((data) => showProducts(data));
 };
@@ -12,17 +13,18 @@ const showProducts = (products) => {
   for (const product of allProducts) {
     const image = product.image;
     const div = document.createElement("div");
-    div.classList.add("product");
+    div.classList.add("single-product", "h-100", "shadow-lg");
     div.innerHTML = `
-    <div class="single-product">
+      <img class="product-image" src=${image}></img>
       <div>
-        <img class="product-image" src=${image}></img>
-      </div>
       <h3>${product.title}</h3>
       <p>Category: ${product.category}</p>
       <h2>Price: $ ${product.price}</h2>
+      <p>Customer Reviews:  ${product.rating.rate} out of 5 by
+        <span class="text-info">${product.rating.count}</span>
+      </p>
       <button onclick="addToCart(${product.id},${product.price})" id="addToCart-btn" class="buy-now btn btn-success">add to cart</button>
-      <button id="details-btn" class="btn btn-danger">Details</button>
+      <button onclick="loadDetails(${product.id})" id="details-btn" class="btn btn-danger">Details</button>
     </div>
       `;
     document.getElementById("all-products").appendChild(div);
@@ -87,4 +89,26 @@ const updateTotal = () => {
     getInputValue("total-tax");
   const grandTotalFixed = grandTotal.toFixed(2);
   document.getElementById("total").innerText = grandTotalFixed;
+};
+
+// load details function
+const loadDetails = (id) => {
+  const url = `https://fakestoreapi.com/products/${id}`;
+
+  console.log(id);
+  fetch(url)
+    .then((res) => res.json())
+    .then((data) => displayDetails(data));
+};
+// displayDetails function call
+const displayDetails = (details) => {
+  const cartDetails = document.getElementById("cart-details");
+  cartDetails.classList.add("shadow-lg");
+  cartDetails.innerHTML = `
+    <h5>Title : ${details.title}</h5>
+    <h6>Price : ${details.price}</h6>
+    <p>Description : ${details.description}</p>
+
+   `;
+  // cartDetails.appendChild(div);
 };
