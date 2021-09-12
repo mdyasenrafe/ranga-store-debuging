@@ -106,7 +106,7 @@ const displayDetails = (details) => {
   cartDetails.classList.add("shadow-lg");
   cartDetails.innerHTML = `
     <h5>Title : ${details.title}</h5>
-    <h6>Price : ${details.price}</h6>
+    <h6>Price : $ ${details.price}</h6>
     <p>Description : ${details.description}</p>
 
    `;
