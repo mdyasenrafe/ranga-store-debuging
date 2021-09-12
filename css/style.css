@@ -1,10 +1,10 @@
 body {
   overflow-x: hidden;
   font-family: "Montserrat", sans-serif;
-  /* background-image: url(/banner-imge.jpg);
+  background-image: url(/banner-imge.jpg);
   background-attachment: fixed;
   background-repeat: no-repeat;
-  background-size: cover; */
+  background-size: cover;
 }
 
 .search-field {

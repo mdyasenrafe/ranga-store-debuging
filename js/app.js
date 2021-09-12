@@ -13,7 +13,7 @@ const showProducts = (products) => {
   for (const product of allProducts) {
     const image = product.image;
     const div = document.createElement("div");
-    div.classList.add("single-product", "h-100", "shadow-lg");
+    div.classList.add("single-product", "h-100", "shadow-lg", "bg-light");
     div.innerHTML = `
       <img class="product-image" src=${image}></img>
       <div>
