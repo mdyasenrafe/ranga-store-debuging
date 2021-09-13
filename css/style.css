@@ -10,10 +10,9 @@ body {
 .search-field {
   width: 400px;
 }
-.search-button {
-  width: 100px;
+.rounded-btn {
   border: 0 !important;
-  padding: 0px 25px;
+  padding: 5px 25px;
   border-radius: 30px !important;
   box-shadow: none !important;
 }
